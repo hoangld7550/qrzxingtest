@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">qrzxing</string>
+    <string name="turn_on_flashlight">bat flash</string>
+    <string name="turn_off_flashlight">tat flash</string>
+</resources>
