@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -36,6 +37,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class MainActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
     private ZXingScannerView mScannerView;
     private Button btnzxing;
+    private Button btnzxing2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +47,38 @@ public class MainActivity extends AppCompatActivity implements ZXingScannerView.
                 PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA},
                     50); }
+        btnzxing2= findViewById(R.id.btnzxing2);
         btnzxing= findViewById(R.id.btnzxing);
+        btnzxing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setCam();
+            }
+        });
+        btnzxing2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setCamFlash();
+            }
+        });
         mScannerView = findViewById(R.id.scannerView);   // Programmatically initialize the scanner view
 
+        setCam();
+    }
+
+    private void setCam() {
+        mScannerView.clearFocus();
+        mScannerView.stopCamera();
+        mScannerView.stopCameraPreview();
+        mScannerView.destroyDrawingCache();
         mScannerView.setFlash(false);
         mScannerView.startCamera(0);
-
-
-        //scanCode();
-
+    }
+    private void setCamFlash() {mScannerView.stopCamera();
+        mScannerView.stopCameraPreview();
+        mScannerView.destroyDrawingCache();
+        mScannerView.setFlash(true);
+        mScannerView.startCamera(0);
     }
 
 

@@ -11,6 +11,11 @@
         android:id="@+id/btnzxing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <Button
+        android:text="dsdsds"
+        android:id="@+id/btnzxing2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <me.dm7.barcodescanner.zxing.ZXingScannerView
         android:id="@+id/scannerView"
         android:layout_width="match_parent"
